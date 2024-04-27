@@ -148,6 +148,7 @@ function HereMapsAPIService($q, $http, HereMapsConfig, HereMapsUtilsService, Her
 
         _params.app_id = HereMapsConfig.app_id;
         _params.app_code = HereMapsConfig.app_code;
+        _params.apiKey = HereMapsConfig.apiKey;
 
         $http.get(autocompleteUrl, { params: _params })
             .success(function(response) {
@@ -173,7 +174,8 @@ function HereMapsAPIService($q, $http, HereMapsConfig, HereMapsUtilsService, Her
                 locationid: locationId,
                 gen: 9,
                 app_id: HereMapsConfig.app_id,
-                app_code: HereMapsConfig.app_code
+                app_code: HereMapsConfig.app_code,
+                apiKey: HereMapsConfig.apiKey
             };
 
         $http.get(locationUrl, { params: _params })

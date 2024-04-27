@@ -6,6 +6,7 @@ module.exports = function() {
         return {
             app_id: options.app_id,
             app_code: options.app_code,
+            apiKey: options.apiKey,
             apiVersion: options.apiVersion || DEFAULT_API_VERSION,
             useHTTPS: options.useHTTPS,
             useCIT: !!options.useCIT,

@@ -36,6 +36,7 @@ Before, you should register [here](https://developer.here.com/plans/api/consumer
             HereMapsConfigProvider.setOptions({
                 'app_id': 'your_app_id_here',
                 'app_code': 'your_app_code_here',
+                'apiKey': 'your_apiKey_here', //either this or app_code for compatibility
                 'useHTTPS': true
             });
         }]);

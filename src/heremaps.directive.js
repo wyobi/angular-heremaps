@@ -80,8 +80,8 @@ function HereMapsDirective(
         }
 
         function _setupMapPlatform() {
-            if (!HereMapsConfig.app_id || !HereMapsConfig.app_code)
-                throw new Error('app_id or app_code were missed. Please specify their in HereMapsConfig');
+            if (!HereMapsConfig.app_id || (!HereMapsConfig.app_code && HereMapsConfig.apiKey))
+                throw new Error('app_id or either of app_code and apiKey were missed. Please specify their in HereMapsConfig');
 
             heremaps.platform = new H.service.Platform(HereMapsConfig);
             heremaps.layers = heremaps.platform.createDefaultLayers();

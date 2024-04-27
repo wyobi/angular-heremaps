@@ -1,30 +1,33 @@
 /**
  * Created by Dmytro on 3/27/2016.
  */
-var browserify = require('browserify'),
-    gulp = require('gulp'),
-    source = require('vinyl-source-stream'),
-    minify = require('gulp-minify'),
-    buffer = require('vinyl-buffer'),
-    config = require('./package.json'),
-    argv = require('yargs').argv,
-    browserSync = require("browser-sync").create();
+const browserify = require('browserify'),
+      gulp = require('gulp'),
+      source = require('vinyl-source-stream'),
+      minify = require('gulp-minify'),
+      buffer = require('vinyl-buffer'),
+      config = require('./package.json'),
+      argv = require('yargs').argv,
+      browserSync = require("browser-sync").create();
 
-/* pathConfig*/
-var entryPoint = './src/index.js',
-    browserDir = './',
-    jsWatchPath = './src/**/*.js';
+/* pathConfig */
+const entryPoint = './src/index.js',
+      browserDir = './',
+      jsWatchPath = './src/**/*.js';
 /**/
 
-gulp.task('browser-sync', function () {
+// Initialize Browser-Sync
+function browserSyncTask(done) {
     browserSync.init({
         server: {
             baseDir: browserDir
         }
     });
-});
+    done();
+}
 
-gulp.task('build', function () {
+// Build task
+function build() {
     return browserify(entryPoint, { debug: true })
         .bundle()
         .pipe(source('angular-heremaps.js'))
@@ -36,11 +39,18 @@ gulp.task('build', function () {
         }))
         .pipe(gulp.dest('./dist/'))
         .pipe(browserSync.reload({ stream: true }));
-});
+}
 
-gulp.task('serve', ['build', 'browser-sync'], function () {
-    gulp.watch(jsWatchPath, ['build']).on('change', browserSync.reload);
+// Serve task
+function serve() {
+    gulp.watch(jsWatchPath, build).on('change', browserSync.reload);
     gulp.watch("index.html").on('change', browserSync.reload);
-})
+}
 
-gulp.task('default', ['build']);
+// Define public tasks
+gulp.task('browser-sync', browserSyncTask);
+gulp.task('build', build);
+gulp.task('serve', gulp.series('build', 'browser-sync', serve));
+
+// Default task
+gulp.task('default', gulp.series('build'));
