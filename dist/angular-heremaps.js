@@ -112,7 +112,7 @@ function HereMapsDirective(
         }
 
         function _initMap(cb) {
-            var map = heremaps.map = new H.Map($element[0], heremaps.layers.normal.map, {
+            var map = heremaps.map = new H.Map($element[0], heremaps.layers.vector.normal.map, {
                 zoom: HereMapsUtilsService.isValidCoords(position) ? options.zoom : options.maxZoom,
                 center: new H.geo.Point(position.latitude, position.longitude)
             });
