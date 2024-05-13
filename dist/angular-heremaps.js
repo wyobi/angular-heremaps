@@ -965,7 +965,7 @@ function HereMapsUiFactory(HereMapsAPIService, HereMapsMarkerService, HereMapsUt
         var NAMES = HereMapsCONSTS.CONTROLS.NAMES,
             userControl = this.createUserControl();
 
-        this.ui.getControl(NAMES.SETTINGS).setIncidentsLayer(false);
+        // this.ui.getControl(NAMES.SETTINGS).setIncidentsLayer(false);
         this.ui.addControl(NAMES.USER, userControl);
         this.setControlsAlignment(NAMES);
     }
