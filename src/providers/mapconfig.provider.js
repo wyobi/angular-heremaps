@@ -1,6 +1,6 @@
 module.exports = function() {
     var options = {};
-    var DEFAULT_API_VERSION = "3.0";
+    var DEFAULT_API_VERSION = "3.1";
 
     this.$get = function(){
         return {
