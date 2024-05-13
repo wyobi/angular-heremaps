@@ -19,7 +19,9 @@ function HereMapsAPIService($q, $http, HereMapsConfig, HereMapsUtilsService, Her
     var CONFIG = {
         BASE: "://js.api.here.com/v",
         CORE: "mapsjs-core.js",
+        CORELEGACY: "mapsjs-core-legacy.js",
         SERVICE: "mapsjs-service.js",
+        SERVICELEGACY: "mapsjs-service-legacy.js",
         UI: {
             src: "mapsjs-ui.js",
             href: "mapsjs-ui.css"
@@ -32,7 +34,9 @@ function HereMapsAPIService($q, $http, HereMapsConfig, HereMapsUtilsService, Her
     var API_DEFERSQueue = {};
 
     API_DEFERSQueue[CONFIG.CORE] = [];
+    API_DEFERSQueue[CONFIG.CORELEGACY] = [];
     API_DEFERSQueue[CONFIG.SERVICE] = [];
+    API_DEFERSQueue[CONFIG.SERVICELEGACY] = [];
     API_DEFERSQueue[CONFIG.UI.src] = [];
     API_DEFERSQueue[CONFIG.PANO] = [];
     API_DEFERSQueue[CONFIG.EVENTS] = [];
@@ -53,7 +57,11 @@ function HereMapsAPIService($q, $http, HereMapsConfig, HereMapsUtilsService, Her
     function loadApi() {
         return _getLoader(CONFIG.CORE)
             .then(function () {
+                return _getLoader(CONFIG.CORELEGACY);
+            }).then(function () {
                 return _getLoader(CONFIG.SERVICE);
+            }).then(function () {
+                return _getLoader(CONFIG.SERVICELEGACY);
             });
     }
 
