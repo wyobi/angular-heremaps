@@ -62,12 +62,12 @@ function HereMapsMarkerService(HereMapsDefaultMarker, HereMapsDOMMarker, HereMap
         map.addObject(map.markersGroup);
 
         if (refreshViewbounds) {
-            setViewBounds(map, map.markersGroup.getBounds());
+            setViewBounds(map, map.markersGroup.getBoundingBox());
         }
     }
 
     function setViewBounds(map, bounds, opt_animate) {
-        map.setViewBounds(bounds, !!opt_animate);
+        map.getViewModel().setLookAtData(bounds, !!opt_animate);
     }
 
     function updateMarkers(map, places, refreshViewbounds) {

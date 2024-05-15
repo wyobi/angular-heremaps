@@ -56,7 +56,7 @@ function HereMapsEventsFactory(HereMapsUtilsService, HereMapsMarkerService, Here
                 target = e.target;
 
             if (HereMapsMarkerService.isMarkerInstance(target)) {
-                target.setPosition(self.map.screenToGeo(pointer.viewportX, pointer.viewportY));
+                target.setGeometry(self.map.screenToGeo(pointer.viewportX, pointer.viewportY));
             }
 
             self.triggerUserListener(HereMapsCONSTS.USER_EVENTS[e.type], e);

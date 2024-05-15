@@ -47,7 +47,13 @@ module.exports = function (config) {
             }]
         },
 
-        browsers: ['PhantomJS'],
+        browsers: ['ChromeHeadless'],
+        customLaunchers: {
+            ChromeHeadless: {
+                base: 'Chrome',
+                flags: ['--headless', '--disable-gpu', '--no-sandbox', '--remote-debugging-port=9222']
+            }
+        },
         // browsers: ['Chrome'],
 
         autoWatch: false,

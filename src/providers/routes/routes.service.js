@@ -62,7 +62,7 @@ function HereMapsRoutesService($q, HereMapsMarkerService) {
         if (!map || !route || !route.shape)
             return;
 
-        var strip = new H.geo.Strip(), polyline = null;
+        var strip = new H.geo.LineString(), polyline = null;
 
         route.shape.forEach(function (point) {
             var parts = point.split(',');
@@ -88,7 +88,7 @@ function HereMapsRoutesService($q, HereMapsMarkerService) {
         group.addObject(polyline);
 
         if(routeData.zoomToBounds) {
-            HereMapsMarkerService.setViewBounds(map, polyline.getBounds(), true);
+            HereMapsMarkerService.setViewBounds(map, polyline.getBoundingBox(), true);
         }
     }
 

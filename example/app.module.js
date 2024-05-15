@@ -7,8 +7,9 @@
         .module('demoModule', ['heremaps'])
         .config(["HereMapsConfigProvider", function (HereMapsConfigProvider) {
             HereMapsConfigProvider.setOptions({
-                'app_id': 'DemoAppId01082013GAL',
-                'app_code': 'AJKnXv84fjrb0KIHawS0Tg',
+                'app_id': 'zm1yLbWXkBaMfvC4k9Vj',
+                'app_code': 'Hta92W2U5uTbX36g3TIEpQ',
+                'apiKey': 'YjRvOqAG8Ef-yjrc9Z5xjviXTGgEbgoZJZ7Rjl65g00',
                 'useHTTPS': true,
                 'useCIT': true,
                 'mapTileConfig': {
@@ -82,7 +83,7 @@
                 markup: '<div class="dom-marker"><h3>DOM Marker</h3><h5>(Click me)</h5></div>',
                 popup: {
                     display: 'onClick',
-                    markup: '<a class="github-link" target="_black" href="https://github.com/dverbovyi/angular-heremaps">View on GitHub</a>'
+                    markup: '<a class="github-link" target="_blank" href="https://github.com/dverbovyi/angular-heremaps">View on GitHub</a>'
                 }
             },
             {

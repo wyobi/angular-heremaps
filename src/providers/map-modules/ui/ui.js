@@ -63,7 +63,7 @@ function HereMapsUiFactory(HereMapsAPIService, HereMapsMarkerService, HereMapsUt
                     HereMapsUtilsService.zoom(self.map, 17, .08);
 
                     if (self.userMarker) {
-                        self.userMarker.setPosition(position);
+                        self.userMarker.setGeometry(position);
                         return;
                     }
                     

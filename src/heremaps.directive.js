@@ -167,16 +167,32 @@ function HereMapsDirective(
         
         function _setCustomMapStyles(map, config) {
             // Create a MapTileService instance to request base tiles (i.e. base.map.api.here.com):
-            var mapTileService = heremaps.platform.getMapTileService({ 'type': 'base' });
+            // var mapTileService = heremaps.platform.getMapTileService({ 'type': 'base' });
+            var rasterTileService = heremaps.platform.getRasterTileService({
+                format: config.format || 'png', 
+                queryParams: {
+                    lang: 'en',
+                    ppi:  config.ppi || 400,
+                    style: config.style || 'explore.day',
+                    congestion: config.congestion || 'true',
+                    features: config.features || 'pois:all,environmental_zones:all,congestion_zones:all,vehicle_restrictions:active_and_inactive'
+                },
+            });
 
             // Create a tile layer which requests map tiles
-            var newStyleLayer = mapTileService.createTileLayer(
-                'maptile', 
-                config.scheme || 'normal.day', 
-                config.size || 256, 
-                config.format || 'png8', 
-                config.metadataQueryParams || {}
-            );
+            // var newStyleLayer = mapTileService.createTileLayer(
+            //     'maptile', 
+            //     config.scheme || 'normal.day', 
+            //     config.size || 256, 
+            //     config.format || 'png8', 
+            //     config.metadataQueryParams || {}
+            // );
+            var rasterTileProvider = new H.service.rasterTile.Provider(rasterTileService, {
+                // engineType: H.Map.EngineType.HARP,
+                tileSize: 512
+            });
+            
+            var newStyleLayer = new H.map.layer.TileLayer(rasterTileProvider);
             
             // Set new style layer as a base layer on the map:
             map.setBaseLayer(newStyleLayer);

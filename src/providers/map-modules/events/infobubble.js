@@ -32,7 +32,7 @@ function HereMapsInfoBubbleFactory(HereMapsMarkerService, HereMapsUtilsService, 
     function update(bubble, data) {
         bubble.display = data.display;
 
-        bubble.setPosition(data.position);
+        bubble.setGeometry(data.position);
         bubble.setContent(data.markup);
 
         bubble.setState(HereMapsCONSTS.INFOBUBBLE.STATE.OPEN);
@@ -67,7 +67,7 @@ function HereMapsInfoBubbleFactory(HereMapsMarkerService, HereMapsUtilsService, 
             return;
 
         var source = {
-            position: target.getPosition(),
+            position: target.getGeometry(),
             markup: data.markup,
             display: data.display
         };
