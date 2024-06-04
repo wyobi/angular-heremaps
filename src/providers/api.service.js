@@ -277,7 +277,13 @@ function HereMapsAPIService($q, $http, HereMapsConfig, HereMapsUtilsService, Her
             case CONFIG.CORE:
                 checker = _isCoreLoaded;
                 break;
+            case CONFIG.CORELEGACY:
+                checker = _isCoreLoaded;
+                break;
             case CONFIG.SERVICE:
+                checker = _isServiceLoaded;
+                break;
+            case CONFIG.SERVICELEGACY:
                 checker = _isServiceLoaded;
                 break;
             case CONFIG.UI.src:
