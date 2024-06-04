@@ -60,7 +60,9 @@ function HereMapsDirective(
         $timeout(function () {
             return _setMapSize();
         }).then(function () {
-            HereMapsAPIService.loadApi().then(_apiReady);
+            HereMapsAPIService.loadApi().then(_apiReady).catch(function(e) {
+                console.error(e);
+            });
         });
 
         options.resize && addOnResizeListener();

@@ -28,7 +28,8 @@
   },
   "homepage": "https://dverbovyi.github.io/angular-heremaps/",
   "dependencies": {
-    "angular": "^1.5.6"
+    "angular": "^1.5.6",
+    "express": "^4.19.2"
   },
   "devDependencies": {
     "angular-mocks": "^1.8.3",
